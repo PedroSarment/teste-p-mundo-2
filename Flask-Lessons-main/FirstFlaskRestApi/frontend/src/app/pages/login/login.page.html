@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form  #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <ion-list lines="none" class="ion-justify-content-around">
+      <ion-item color="light"class="ion-margin">
+        <ion-icon name="mail" slot="start" color="primary"></ion-icon>
+          <ion-input type="email" email name="email" ngModel #emailCtrl="ngModel" aria-placeholder="Email" required></ion-input>
+      </ion-item>
+      <ion-text class="ion-text-center"  color="danger" *ngIf="!emailCtrl.valid && emailCtrl.touched">
+        <p> * please enter a valid email address *</p>
+      </ion-text>
+      <ion-item color="light" class="ion-margin">
+        <ion-icon name="key" slot="start" color="primary"></ion-icon>
+          <ion-input type="password" name="password" ngModel #passwordCtrl="ngModel" aria-placeholder="password" minlength="8" required></ion-input>
+      </ion-item>
+      <ion-text class="ion-text-center" color="danger" *ngIf="!passwordCtrl.valid && passwordCtrl.touched">
+        <p> * password must of be minimum 8 characteres long *</p>
+      </ion-text>
+    </ion-list>
+      <div class="ion-margin">
+        <ion-button *ngIf="!isLogin"  [disabled]="!f.valid" expand="block" shape="round" type="submit" color="primary">SIGN IN</ion-button>
+        <ion-button *ngIf="isLogin" [disabled]="!f.valid" expand="block" shape="round" color="primary">
+          <ion-spinner name="circles"></ion-spinner> 
+        </ion-button>
+      </div>
+  </form>
+</ion-content>
+
+
+

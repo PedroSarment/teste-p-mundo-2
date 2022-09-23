@@ -1,0 +1,7 @@
+{
+  "name": "Escolas-pelo-mundo-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

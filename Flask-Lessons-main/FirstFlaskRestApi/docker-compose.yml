@@ -1,0 +1,17 @@
+version: '3'
+services:
+  frontend:
+    image: node:16
+    volumes:
+      - ./frontend:/frontend
+    ports:
+      - 8100:8100
+    command: bash -c "cd /frontend && npm install -g && npm i -D -E @angular/cli &&npm install -g ionic@latest && ionic serve --external"
+  backend:
+    image: python:3.9
+    volumes:
+      - ./backend:/backend
+    ports:
+      - 5100:5100
+    command: bash -c "cd /backend && pip install -r requirements.txt && pip install flask_sqlalchemy && python app.py"
+
